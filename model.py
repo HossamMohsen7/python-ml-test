@@ -14,8 +14,6 @@ def predict_mobile_price_range(user_input):
     x = df.drop(columns=['price_range','m_dep','fc','talk_time'],axis=1)
     y = df['price_range']
     x_train, _, y_train, _ = train_test_split(x, y, test_size=0.2, random_state=42)
-    median = y_train.median()
-    y_train.fillna(median, inplace=True)
     
     # Pipeline
     num_pipeline = Pipeline([('imputer', SimpleImputer(strategy="median"))])
